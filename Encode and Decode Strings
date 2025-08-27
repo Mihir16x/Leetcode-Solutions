@@ -1,0 +1,21 @@
+
+
+class Solution:
+    def encode(self, strs: List[str]) -> str:
+        res = ""
+        for s in strs:
+            res += str(len(s)) + '#' + s
+        return res
+
+    def decode(self, s: str) -> List[str]:
+        res = []
+        i = 0
+
+        while i < len(s):   # ✅ use s, not str
+            j = i
+            while s[j] != '#':   # ✅ use s, not str
+                j += 1
+            length = int(s[i:j])  # number before '#'
+            res.append(s[j+1 : j+1+length])  # slice out the word
+            i = j + 1 + length   # move pointer
+        return res
