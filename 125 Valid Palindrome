@@ -1,0 +1,16 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        new = re.sub(r'[^a-zA-Z0-9]', '', s)
+        new = new.lower()
+
+        i = 0
+        j = len(new) - 1
+        for x in range(len(new)):
+            if new[i] == new[j]:
+                i+=1
+                j-=1
+                continue
+            else:
+                return False
+        return True
+        
